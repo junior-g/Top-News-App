@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="16dp"
+    tools:context="com.example.abis.searchabook.MainActivity">
+
+    <EditText
+        android:id="@+id/search_keyword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="type book name key word here"
+        android:ems="10"
+        android:backgroundTint="#039BE5"
+        android:textColor="#039BE5"
+        android:textColorHighlight="#616161"
+        android:visibility="visible"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchResult"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="search"
+        android:visibility="visible"
+        android:id="@+id/search_button" />
+
+
+</LinearLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+    <TextView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:text="7.5"
+        android:background="@drawable/show_rating"
+        android:layout_gravity="center_vertical"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:id="@+id/rating"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:text="BOOK NAME"
+            android:id="@+id/book_name"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="1"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            android:text="Authors"
+            android:id="@+id/Authors"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="1"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            android:text="Discription"
+            android:id="@+id/discription"/>
+    </LinearLayout>
+</LinearLayout>
