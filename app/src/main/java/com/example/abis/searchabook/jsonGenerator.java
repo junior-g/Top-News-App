@@ -151,10 +151,14 @@ public final class jsonGenerator {
                rating= volumeinfo.getDouble("averageRating");
                 JSONObject accessinfo=book.getJSONObject("accessInfo");
                 String urlLink=accessinfo.getString("webReaderLink");
-                String discription="\n Publised in year- ";
+                String discription="Publised in year- .............jkjkkjkkjjkjkkjkjj";
                 if(!volumeinfo.isNull("publishedDate"))
                 discription+=volumeinfo.getString("publishedDate")+" "+"Language in-"+volumeinfo.getString("language");
-                books.add(new Books(title, authors, rating, urlLink, discription));
+
+                //image of book
+                JSONObject imgobj=volumeinfo.getJSONObject("imageLinks");
+                String imageSrc=imgobj.getString("thumbnail");
+                books.add(new Books(title, authors, rating, urlLink, discription, imageSrc));
             }
         }catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
