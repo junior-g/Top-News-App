@@ -1,13 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginLeft="16dp"
     tools:context="com.example.abis.searchabook.MainActivity">
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="#3E2723"
+        android:divider="@null"
+        android:weightSum="2"
+        >
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/one"
+            android:scaleType="fitXY"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:src="@drawable/book_img" />
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/two"
+            android:layout_width="fill_parent"
+            android:scaleType="fitXY"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            android:src="@drawable/book_img" />
+
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="16dp">
     <EditText
         android:id="@+id/search_keyword"
         android:layout_width="match_parent"
@@ -16,6 +50,7 @@
         android:ems="10"
         android:backgroundTint="#039BE5"
         android:textColor="#039BE5"
+        android:textColorHint="#C6FF00"
         android:textColorHighlight="#616161"
         android:visibility="visible"
         android:layout_marginRight="16dp"
@@ -31,5 +66,5 @@
         android:visibility="visible"
         android:id="@+id/search_button" />
 
-
 </LinearLayout>
+</RelativeLayout>
