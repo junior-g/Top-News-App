@@ -1,4 +1,4 @@
-package com.example.abis.searchabook;
+package com.example.abis.topnews;
 
 import android.util.Log;
 
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by abis on 27/8/17.
+ * Created by abis on 29/9/17.
  */
 
 public final class jsonGenerator {
@@ -69,8 +69,8 @@ public final class jsonGenerator {
         try
         {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(10000 /* milliseconds */);
-            urlConnection.setConnectTimeout(15000 /* milliseconds */);
+            urlConnection.setReadTimeout(100000 /* milliseconds */);
+            urlConnection.setConnectTimeout(150000 /* milliseconds */);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
             // If the request was successful (response code 200),
@@ -98,7 +98,7 @@ public final class jsonGenerator {
 
 
     //geting list
-    public static List<Books> extractBooks(String urlString)
+    public static List<News> extractBooks(String urlString)
     {
 
         try {
@@ -106,7 +106,7 @@ public final class jsonGenerator {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        ArrayList<Books> books=new ArrayList<>();
+        ArrayList<News> books=new ArrayList<>();
         URL url=createURL(urlString);
         String JSON_RESPONSE="";
         try {
@@ -119,47 +119,21 @@ public final class jsonGenerator {
         try
         {
             JSONObject root=new JSONObject(JSON_RESPONSE);
-            JSONArray items= root.getJSONArray("items");
+            JSONArray items= root.getJSONArray("articles");
             for(int i=0; i<items.length(); ++i)
             {
-                JSONObject book = items.getJSONObject(i);
-                JSONObject volumeinfo=book.getJSONObject("volumeInfo");
-                String title=volumeinfo.getString("title");
-                StringBuilder aut=new StringBuilder();
-                boolean isauthor=volumeinfo.isNull("authors");
-                if(!isauthor) {
-                    JSONArray authorlist = volumeinfo.getJSONArray("authors");
-                    if(authorlist.length()>0)
-                    {
-                        String name = authorlist.getString(0);
-                        aut.append(name);
-                    }
-                    for (int j = 1; j < authorlist.length(); ++j) {
-                        String name = authorlist.getString(j);
-                        aut.append(",");
-                        aut.append(" ");
-                        aut.append(name);
-                    }
-                }
-                String authors=null;
-                if(!isauthor)
-                authors=aut.toString();
-
-                boolean israting=volumeinfo.isNull("averageRating");
-                Double rating=0.0;
-                if(!israting)
-               rating= volumeinfo.getDouble("averageRating");
-                JSONObject accessinfo=book.getJSONObject("accessInfo");
-                String urlLink=accessinfo.getString("webReaderLink");
-                String discription="Publised in year- ";
-                if(!volumeinfo.isNull("publishedDate"))
-                discription+=volumeinfo.getString("publishedDate")+" "+"Language in-"+volumeinfo.getString("language");
-                if(!volumeinfo.isNull("description"))
-                    discription+="\n"+volumeinfo.getString("description");
-                //image of book
-                JSONObject imgobj=volumeinfo.getJSONObject("imageLinks");
-                String imageSrc=imgobj.getString("thumbnail");
-                books.add(new Books(title, authors, rating, urlLink, discription, imageSrc));
+                JSONObject news = items.getJSONObject(i);
+                String title = "<NO TITLE>", discription="<NO DISCRIPTION>", urltoImage="http://epaper2.mid-day.com/images/no_image_thumb.gif";
+                String urlto="https://www.startalkradio.net/wp-content/uploads/2016/02/no-link-300x300.jpg";
+                if(!news.isNull("title"))
+                 title=news.getString("title");
+                if(!news.isNull("description"))
+                 discription=news.getString("description");
+                if(!news.isNull("url"))
+                 urlto=news.getString("url");
+                if(!news.isNull("urlToImage"))
+                 urltoImage=news.getString("urlToImage");
+                books.add(new News(title, discription, urlto, urltoImage));
             }
         }catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,

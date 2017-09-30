@@ -1,7 +1,7 @@
-package com.example.abis.searchabook;
+package com.example.abis.topnews;
 
 /**
- * Created by abis on 27/8/17.
+ * Created by abis on 29/9/17.
  */
 import android.app.LoaderManager;
 import android.content.Context;
@@ -16,8 +16,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -26,7 +24,7 @@ import android.app.LoaderManager.LoaderCallbacks;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BooksListing extends AppCompatActivity implements LoaderCallbacks<List<Books>>{
+public class NewsListing extends AppCompatActivity implements LoaderCallbacks<List<News>>{
     private  static  final  int LOADER_ID=1;
     private AdapterList mAdapter;
     private TextView mEmptyStateTextView;
@@ -35,10 +33,9 @@ public class BooksListing extends AppCompatActivity implements LoaderCallbacks<L
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.book_list);
+        setContentView(R.layout.news_list);
         //netwok connected?
-        cm =
-                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        cm =(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         boolean isConnected = activeNetwork != null &&
@@ -53,13 +50,13 @@ public class BooksListing extends AppCompatActivity implements LoaderCallbacks<L
         ListView booksListView=(ListView)findViewById(R.id.list_item);
 
 
-        mAdapter=new AdapterList(this,new  ArrayList<Books>());
+        mAdapter=new AdapterList(this,new  ArrayList<News>());
         booksListView.setAdapter(mAdapter);
 
         booksListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Books currentBook=mAdapter.getItem(position);
+                News currentBook=mAdapter.getItem(position);
                 Uri bookUri=Uri.parse(currentBook.getUrl());
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, bookUri); // Create a new intent to view the earthquake URI
                 try {
@@ -81,13 +78,13 @@ public class BooksListing extends AppCompatActivity implements LoaderCallbacks<L
         }
     }
     @Override
-    public Loader<List<Books>> onCreateLoader(int i, Bundle bundle) {
+    public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
 
-        return new BookLoader(this, MainActivity.url);
+        return new NewsLoader(this, MainActivity.url);
     }
 
     @Override
-    public void onLoadFinished(Loader<List<Books>> loader, List<Books> bookses) {
+    public void onLoadFinished(Loader<List<News>> loader, List<News> bookses) {
         if(mAdapter!=null)
             mAdapter.clear();
         mEmptyStateTextView.setText("NO DATA FOUND");
@@ -107,7 +104,7 @@ public class BooksListing extends AppCompatActivity implements LoaderCallbacks<L
     }
 
     @Override
-    public void onLoaderReset(Loader<List<Books>> loader) {
+    public void onLoaderReset(Loader<List<News>> loader) {
         mAdapter.clear();
     }
 }

@@ -1,63 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp">
-
-    <TextView
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:text="7.5"
-        android:background="@drawable/show_rating"
-        android:layout_gravity="center_vertical"
-        android:fontFamily="sans-serif-medium"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:textColor="@android:color/white"
-        android:id="@+id/rating"/>
-    <LinearLayout
-        android:layout_width="0dp"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="4"
+    >
+    <ImageView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
+        android:layout_weight="2"
+        android:src="@mipmap/ic_launcher"
+        android:id="@+id/caption_image"
+        android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:textColor="#0091EA"
-            android:textSize="16sp"
-            android:text="BOOK NAME"
-            android:id="@+id/book_name"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:fontFamily="sans-serif-medium"
-            android:maxLines="1"
-            android:textAllCaps="true"
-            android:textColor="#90A4AE"
-            android:textSize="12sp"
-            android:text="Authors"
-            android:id="@+id/Authors"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:fontFamily="sans-serif-medium"
-            android:textAllCaps="true"
-            android:textColor="#C6FF00"
-            android:textSize="12sp"
-            android:text="@string/text_with_paragraphs"
-            android:id="@+id/discription"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"
-            android:layout_marginTop="16dp"
-            android:id="@+id/bookimage"/>
-    </LinearLayout>
+        android:layout_marginRight="16dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/headline"
+        android:textSize="18sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="HEADLINE"
+        android:textColor="#FFFFFF"
+        android:capitalize="words"
+        android:gravity="center"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/discription"
+        android:textSize="14sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:capitalize="sentences"
+        android:textColor="#FFFFFF"
+        android:text="GGGGGGGGGGHHGGGGGGGGGGGGGG
+jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj hjhjhjhhnGGGj"/>
+
+
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.abis.searchabook;
+package com.example.abis.topnews;
 
 import org.junit.Test;
 
